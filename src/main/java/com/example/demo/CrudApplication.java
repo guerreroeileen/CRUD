@@ -14,15 +14,6 @@ public class CrudApplication {
 		SpringApplication.run(CrudApplication.class, args);
 	}
 
-//	@Bean
-//	public WebMvcConfigurer corsConfigurer() {
-//		return new WebMvcConfigurerAdapter() {
-//			@Override
-//			public void addCorsMappings(CorsRegistry registry) {
-//				registry.addMapping("/**").allowedHeaders("*").allowedMethods("*");
-//			}
-//		};
-//	}
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
