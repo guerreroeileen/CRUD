@@ -14,8 +14,12 @@ import java.util.List;
 @Service
 public class PersonaService {
 
-	@Autowired
-	private PersonaRepository personaRepository;
+	private final PersonaRepository personaRepository;
+
+	public PersonaService(PersonaRepository personaRepository){
+		this.personaRepository = personaRepository;
+	}
+
 
 	public Page<Persona> findAll(Integer page, Integer size, Boolean enablePagination) {
 		return personaRepository.findAll(enablePagination ? PageRequest.of(page, size): Pageable.unpaged());
