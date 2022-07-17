@@ -1,7 +1,8 @@
-package com.example.demo.rest;
+package com.example.demo.controller;
 
 import com.example.demo.model.Persona;
 import com.example.demo.service.PersonaService;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +14,10 @@ import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("persona/")
-public class PersonaRest {
+@AllArgsConstructor
+public class PersonaController {
 
 	private final PersonaService personaService;
-
-	public PersonaRest(PersonaService personaService) {
-		this.personaService = personaService;
-	}
 
 	@PostMapping
 	public ResponseEntity<Persona> create (@Valid @RequestBody Persona persona) {

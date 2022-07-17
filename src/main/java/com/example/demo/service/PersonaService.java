@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Persona;
 import com.example.demo.respository.PersonaRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,13 +13,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class PersonaService {
 
 	private final PersonaRepository personaRepository;
-
-	public PersonaService(PersonaRepository personaRepository){
-		this.personaRepository = personaRepository;
-	}
 
 
 	public Page<Persona> findAll(Integer page, Integer size, Boolean enablePagination) {

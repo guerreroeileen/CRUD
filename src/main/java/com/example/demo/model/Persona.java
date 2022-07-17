@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.audit.Auditable;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Data
 @Table(name = "Persona")
-public class Persona {
+public class Persona extends Auditable<String> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
