@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.PersonaDTO;
 import com.example.demo.model.Persona;
 import com.example.demo.service.PersonaService;
 import lombok.AllArgsConstructor;
@@ -20,10 +21,10 @@ public class PersonaController {
 	private final PersonaService personaService;
 
 	@PostMapping
-	public ResponseEntity<Persona> create (@Valid @RequestBody Persona persona) {
-		Persona newPersonas = personaService.save(persona);
+	public ResponseEntity<PersonaDTO> create (@Valid @RequestBody PersonaDTO persona) {
+		PersonaDTO newPersonas = personaService.save(persona);
 		try {
-			return ResponseEntity.created(new URI("/api/persona/" + newPersonas.getId())).body(persona);
+			return ResponseEntity.created(new URI("/api/persona/" + newPersonas.getNumeroDocumentoIdentificacion())).body(persona);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -31,7 +32,7 @@ public class PersonaController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Page<Persona>> getAll (
+	public ResponseEntity<Page<PersonaDTO>> getAll (
 			@RequestParam(required = false, defaultValue = "0") Integer page,
 			@RequestParam(required = false, defaultValue = "10") Integer size,
 			@RequestParam(required = false, defaultValue = "false") Boolean enablePagination
