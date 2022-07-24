@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.PersonaDTO;
 import com.example.demo.model.Persona;
 import com.example.demo.respository.PersonaRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PersonaService {
 
 	private final PersonaRepository personaRepository;

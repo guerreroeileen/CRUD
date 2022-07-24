@@ -1,7 +1,10 @@
 package com.example.demo.model;
 
 import com.example.demo.audit.Auditable;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +18,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
+@Builder
 @Table(name = "Persona")
 public class Persona extends Auditable<String> {
 

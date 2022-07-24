@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.PersonaDTO;
 import com.example.demo.model.Persona;
 import com.example.demo.service.PersonaService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("persona/")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PersonaController {
 
 	private final PersonaService personaService;
@@ -40,7 +40,7 @@ public class PersonaController {
 		return ResponseEntity.ok(personaService.findAll(page, size, enablePagination));
 	}
 	
-	@PostMapping ("/delete")
+	@PostMapping ("delete")
 	public ResponseEntity<Void> deleteById (@RequestBody Persona persona) {
 		try {
 			personaService.delete(persona);
