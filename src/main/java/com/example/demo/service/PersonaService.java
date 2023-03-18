@@ -5,6 +5,7 @@ import com.example.demo.model.Persona;
 import com.example.demo.respository.PersonaRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,7 @@ public class PersonaService {
 	private final ModelMapper modelMapper;
 
 
+	@Cacheable("findAll")
 	public Page<PersonaDTO> findAll(Integer page, Integer size, Boolean enablePagination) {
 		return personaRepository.findAll(enablePagination ? PageRequest.of(page, size): Pageable.unpaged()).map(this::convertToDto);
 	}
