@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("persona/")
@@ -22,10 +21,10 @@ public class PersonaController {
 
 	@PostMapping
 	public ResponseEntity<PersonaDTO> create (@Valid @RequestBody PersonaDTO persona) {
-		PersonaDTO newPersonas = personaService.save(persona);
 		try {
+			PersonaDTO newPersonas = personaService.save(persona);
 			return ResponseEntity.created(new URI("/api/persona/" + newPersonas.getNumeroDocumentoIdentificacion())).body(persona);
-		} catch (URISyntaxException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
